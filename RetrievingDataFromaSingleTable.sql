@@ -1,8 +1,9 @@
--- Exercise : Return products with quantity in stock equal to 49, 38, 72
+-- BETWEEN Operator - whenever we are comparing an attribute with a range of values 
 
 SELECT *
-FROM products
-WHERE quantity_in_stock IN  ("49", "38", "72")
+FROM customers
+WHERE points BETWEEN 1000 AND 3000
+
 
 
 
