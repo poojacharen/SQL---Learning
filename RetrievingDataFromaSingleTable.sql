@@ -1,10 +1,8 @@
+-- Where clause - It's used to filter data. Arithmetic operators are also used >, >=, <, <=, =, != or <>
+SELECT *
+FROM customers
+WHERE birth_date <= "1992-01-01"
 
-
-SELECT 
-     name, 
-     unit_price, 
-     unit_price * 1.1 AS "new price"
-FROM products
 
 
 
