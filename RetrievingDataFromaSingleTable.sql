@@ -5,9 +5,12 @@
 --    -- page 3: 7 - 9
 -- LIMIT 6, 3 (if we want to skip 2 pages and get the 3rd page then limit 6 and 3, here 6 is an offset(which basically tells MySQL to skip the first 6 records and then pick 3 records)
 
+-- Exercise : Get the top three loyal customers
+
 SELECT *
 FROM customers
-LIMIT 6, 3
+ORDER BY points DESC
+LIMIT 3
     
     
 	
