@@ -3,11 +3,11 @@
 -- "[gim]e" - represents any charecters that are present before e and it can also be "e[gim]", and also we can give some range of char like "[a-h]e"
 -- ^ : beginning of a string, $ : end of a string, | : logical or(multipe searh patterns), [abcdef] : any single char listed in the brackets, [-] : to represent a range like [a-h].
 
--- Exercise : 1. Get the customers whose first names are ELKA and AMBUR
+-- Exercise : 2. Get the customers whose last names end with EY or ON
 
 SELECT *
 FROM customers
-WHERE first_name REGEXP "ELKA|AMBUR"
+WHERE last_name REGEXP "ey$|on$"
 
 
 
