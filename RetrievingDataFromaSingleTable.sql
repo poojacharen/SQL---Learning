@@ -1,8 +1,6 @@
--- SELECT clause, AS - Alias (Method 1)
+-- SELECT Clause, DISTINCT - With this query we'll retrieve unique list of state and with this keyword we can remove duplicates (Method 2)
 
-SELECT 
-     first_name, 
-     last_name, 
-     points, 
-     (points + 10) * 100 AS "discount"  
+SELECT DISTINCT state
 FROM customers
+
+
