@@ -1,9 +1,12 @@
--- The AND, OR and NOT Operators : How to combine multiple search conditions when filtering data
--- We can simplify without using NOT operator
+-- Exercise : From the order_items table, get the items for order #6 where the total price is greater than 30
 
 SELECT *
-FROM customers
-WHERE  birth_date <= "1990-01-01" AND points <= 1000
+FROM order_items
+WHERE order_id = 6 AND quantity * unit_price > 30
+
+  
+
+
 
 
 
