@@ -6,9 +6,14 @@
     -- FROM customers
     -- ORDER BY 1, 2 (1, 2 represents first and last name) this should be avoided, instead always sort by first_name(with column names)
     
-SELECT *
-FROM customers
-ORDER BY first_name DESC
+-- Exercise : Select all the order with the id 2 and sort them by their total price in desc order.
+
+SELECT *, quantity * unit_price AS total_price
+FROM order_items
+WHERE order_id = 2 
+ORDER BY total_price DESC
+
+
     
     
 	
