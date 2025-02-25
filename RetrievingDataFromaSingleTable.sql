@@ -1,10 +1,9 @@
 -- The AND, OR and NOT Operators : How to combine multiple search conditions when filtering data
--- OR, AND Operator
+-- NOT
 
 SELECT *
 FROM customers
-WHERE birth_date > "1990-01-01" OR points > 1000 AND
-      state = "VA"
+WHERE NOT birth_date > "1990-01-01" 
 
 
 
