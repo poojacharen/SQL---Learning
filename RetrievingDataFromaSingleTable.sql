@@ -1,8 +1,8 @@
--- NOT IN Operator
+-- Exercise : Return products with quantity in stock equal to 49, 38, 72
 
 SELECT *
-FROM customers
-WHERE state NOT IN ("VA", "FL", "GA") 
+FROM products
+WHERE quantity_in_stock IN  ("49", "38", "72")
 
 
 
