@@ -1,7 +1,2 @@
--- SELECT statement
-USE sql_store;
-
-SELECT *
--- FROM customers
--- WHERE customer_id = 3
--- ORDER BY birth_date 
+-- Test commit to check sync with git
+-- Test 2
