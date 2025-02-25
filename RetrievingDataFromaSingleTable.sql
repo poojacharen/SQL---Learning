@@ -1,19 +1,13 @@
--- ORDER BY Clause : represents the order 
--- eg : 1. ORDER BY first_name (It arrenges the name in the alpahabetical order), 2. ORDER BY first_name DESC (it arranges in descending order)
--- 3. ORDER BY state, first_name (so its sorted based on the state and their first name in ascending order ie., alphabetical order)
--- 4. ORDER BY state DESC, first_name DESC (it can be written in either way ascending or descending order)
--- 5. SELECT first_name, last_name, 10 AS points
-    -- FROM customers
-    -- ORDER BY 1, 2 (1, 2 represents first and last name) this should be avoided, instead always sort by first_name(with column names)
-    
--- Exercise : Select all the order with the id 2 and sort them by their total price in desc order.
+-- LIMIT Clause : How to limit no. of records return from the query.
+-- eg: 1. LIMIT 3 (gives us 3 customers), 2. LIMIT 300 (gives all customers cos there are no 300 customers),
+-- 3. -- page 1: 1 - 3
+--    -- page 2: 4 - 6
+--    -- page 3: 7 - 9
+-- LIMIT 6, 3 (if we want to skip 2 pages and get the 3rd page then limit 6 and 3, here 6 is an offset(which basically tells MySQL to skip the first 6 records and then pick 3 records)
 
-SELECT *, quantity * unit_price AS total_price
-FROM order_items
-WHERE order_id = 2 
-ORDER BY total_price DESC
-
-
+SELECT *
+FROM customers
+LIMIT 6, 3
     
     
 	
