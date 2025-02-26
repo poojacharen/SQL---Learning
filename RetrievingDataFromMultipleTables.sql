@@ -1,13 +1,12 @@
--- Self Outer Joins : Will join within themselves. eg: FROM employees
---                                                     JOIN employees
+-- The USING Clause Method 1
 
-USE sql_hr; 
-SELECT 
-      e.employee_id,
-      e.first_name,
-      m.first_name AS manager
-FROM employees e
-LEFT JOIN employees m
-    ON e.reports_to = m.employee_id
-
-   
+   USE sql_store;
+   SELECT 
+         o.order_id,
+         c.first_name,
+         sh.name AS shipper
+   FROM orders o
+   JOIN customers c
+	   USING (customer_id)
+   LEFT JOIN shippers sh
+       USING (shipper_id)
