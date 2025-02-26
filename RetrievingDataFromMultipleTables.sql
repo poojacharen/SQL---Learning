@@ -1,6 +1,12 @@
--- Inner Joins : Selects records that have matching values in both tables
+-- Self Joins : Joining a table with itself
 
-SELECT order_id, o.customer_id, first_name, last_name
-FROM orders o
-JOIN customers c
-    ON o.customer_id = c.customer_id
+USE sql_hr;
+SELECT 
+      e.employee_id, 
+      e.first_name, 
+      m.first_name manager
+FROM employees e
+JOIN employees m
+     ON e.reports_to = m.employee_id
+
+
