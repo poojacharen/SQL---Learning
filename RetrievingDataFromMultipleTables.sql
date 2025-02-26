@@ -1,15 +1,16 @@
--- Cross Joins : It is used to combine or join every record of first table in every record of the second table
--- Exercise : Do a cross join b/w shippers and products, using the implicit and explicit syntax
+-- Unions : We can combine records from multiple queries
+-- Method 1 : We combined queries with same table
 
--- Explicit syntax metho
 SELECT 
-      p.name AS product,
-      sh.name AS shipper
-FROM shippers sh
-CROSS JOIN products p
-ORDER BY sh.name
-
--- Implicit syntax method
--- SELECT *
--- FROM shippers sh, products p
--- ORDER BY sh.name
+      order_id,
+      order_date,
+      "Active" AS status
+FROM orders
+WHERE order_date >= "2019-01-01" 
+UNION
+SELECT 
+      order_id,
+      order_date,
+      "Archived" AS status
+FROM orders
+WHERE order_date < "2019-01-01"
