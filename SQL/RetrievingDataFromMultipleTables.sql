@@ -1,8 +1,11 @@
--- Inner Joins : Selects records that have matching values in both tables
--- Exercise : Look at the order_items table. Write a query and join this table with products table, so for each order return both the 
---            order_id and product_id as well as its name followed by the quantity and it's unit_price from the order_items table.
+-- Joining across databases : How to combine rows and columns from multiple databases 
+-- Here for example just imagine there is no products table in the sql_store, but we have it in the sql_inventory. if we want that product table
+-- to the sql_store. Here is the method. We need to prefix the table with their current database. 
 
-SELECT  order_id, order_items.product_id, quantity, order_items.unit_price
-FROM order_items
-JOIN products 
-    ON order_items.product_id = products.product_id
+USE sql_inventory;
+SELECT *
+FROM sql_store.order_items oi
+JOIN sql_inventory.products p
+    ON oi.product_id = p.product_id
+
+
