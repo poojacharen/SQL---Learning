@@ -1,12 +1,7 @@
--- The USING Clause Method 1
+-- The USING Clause Method 2
 
-   USE sql_store;
-   SELECT 
-         o.order_id,
-         c.first_name,
-         sh.name AS shipper
-   FROM orders o
-   JOIN customers c
-	   USING (customer_id)
-   LEFT JOIN shippers sh
-       USING (shipper_id)
+USE sql_store;
+SELECT *
+FROM order_items oi
+JOIN order_item_notes oin
+    USING (order_id, product_id)
