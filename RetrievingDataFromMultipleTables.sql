@@ -1,11 +1,13 @@
--- Outer Joins : there are two joins RIGHT Join and LEFT join
--- Exercise : Join the products table with order items table. And see how many times the product has been ordered. Output: product_id, name, qty
+-- Outer Join Between Multiple Tables
 
 SELECT 
-      p.product_id,
-      p.name,
-      oi.quantity
-FROM products p
-LEFT JOIN order_items oi
-	ON p.product_id = oi.product_id
-ORDER BY p.product_id    
+      c.customer_id,
+      c.first_name,
+      o.order_id,
+      sh.name AS shipper
+FROM customers c
+LEFT JOIN orders o
+	ON c.customer_id = o.customer_id
+LEFT JOIN shippers sh
+    ON   o.shipper_id = sh.shipper_id  
+ORDER BY c.customer_id    
