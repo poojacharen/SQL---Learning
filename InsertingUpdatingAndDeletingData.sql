@@ -1,8 +1,4 @@
--- Deleting Rows
+-- Restoring the Databases 
+-- go to the file menu --> open sql script --> navigate to the queries where we stored --> open create-databases.sql --> execute the scrip to 
+--  recreate all of our databases
 
-USE sql_invoicing;
-DELETE FROM invoices
-WHERE client_id = (
-                SELECT * 
-                FROM clients
-                WHERE name = "Myworks")
