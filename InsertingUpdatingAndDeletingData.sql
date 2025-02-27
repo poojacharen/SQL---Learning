@@ -1,9 +1,12 @@
--- Updating Multiple Rows : Syntax is exactly the same as the updating a single rows but the where condition has to be more general
--- Exercise : Write a SQL statement to give any customers born before 1990, 50 extra points
+-- Using Subqueries in Updates 
 
-USE sql_store;
-UPDATE customers
+USE sql_invoicing;
+UPDATE invoices
 SET 
-   points = point + 50
-WHERE birth_date < "1990-01-01"
+   payment_total = invoice_total * 0.5,
+   payment_date = due_date
+WHERE client_id IN
+               (SELECT client_id
+                FROM clients
+                WHERE state IN ("CA", "NY"))
 
