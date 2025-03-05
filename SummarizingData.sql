@@ -1,12 +1,14 @@
 -- The GROUP BY Clause 
--- Method 2 : Grouping using multiple tables - grouping invoice table with clients table
+-- Exercise : You have three columns (date, payment_method, total_payments) we can see the total payments for each date and payment_method 
+--            combination.  
 
 USE sql_invoicing;
 SELECT 
-      state,
-      city,
-      SUM(invoice_total) AS total_sales
-FROM invoices i
-JOIN clients 
-    USING (client_id)
-GROUP BY state, city
+      date,
+      pm.name AS payment_method,
+      SUM(amount) AS total_payments
+FROM payments p
+JOIN payment_methods pm
+    ON p.payment_method = pm.payment_method_id
+GROUP BY date, payment_method
+ORDER BY date
