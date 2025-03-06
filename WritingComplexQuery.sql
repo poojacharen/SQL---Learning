@@ -1,10 +1,10 @@
--- Subqueries 
--- Exercise : In sql_hr database - Find employees whose earn more than average
+-- The IN Operator
+-- Find the products that have never been ordered
 
-USE sql_hr;
-SELECT *
-FROM employees
-WHERE salary > (
-     SELECT AVG(salary)
-     FROM employees
+SELECT * 
+FROM products
+WHERE product_id NOT IN (
+SELECT DISTINCT product_id
+FROM order_items
 )
+
