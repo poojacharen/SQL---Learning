@@ -1,11 +1,10 @@
 -- Subqueries 
--- Find products that are more expensive than Lettuce (id = 3)
+-- Exercise : In sql_hr database - Find employees whose earn more than average
 
-USE sql_store;
-SELECT * 
-FROM products
-WHERE unit_price > (
-     SELECT unit_price
-     FROM products
-     WHERE product_id = 3
+USE sql_hr;
+SELECT *
+FROM employees
+WHERE salary > (
+     SELECT AVG(salary)
+     FROM employees
 )
