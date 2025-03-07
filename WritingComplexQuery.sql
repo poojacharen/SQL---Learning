@@ -1,12 +1,12 @@
--- The ANY Keyword
--- Select clients with at least two invoices
+-- Correlated Subqueries
+-- For each employee - calculate the avg salary for employee.office
+--                     return the employee if salary > avg
 
-USE sql_invoicing;
-SELECT *
-FROM clients
-WHERE client_id = ANY (
-     SELECT client_id
-     FROM invoices
-     GROUP BY client_id
-     HAVING COUNT(*) >= 2
+USE sql_hr;
+SELECT * 
+FROM employees e
+WHERE salary > (
+     SELECT AVG(salary)
+     FROM employees
+     WHERE office_id = e.office_id
 )
