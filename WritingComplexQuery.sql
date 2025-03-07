@@ -1,11 +1,11 @@
 -- The EXISTS Operator
--- Select clients that have an invoice
+-- Exercise : Find the products that have never been ordered
 
-USE sql_invoicing;
+USE sql_store;
 SELECT *
-FROM clients c
-WHERE EXISTS (
-     SELECT client_id
-     FROM invoices 
-     WHERE client_id = c.client_id
+FROM products p
+WHERE NOT EXISTS (
+     SELECT product_id
+     FROM order_items
+     WHERE product_id = p.product_id
 )
