@@ -1,11 +1,10 @@
--- The EXISTS Operator
--- Exercise : Find the products that have never been ordered
+-- Subqueries in the SELECT Clause
 
-USE sql_store;
-SELECT *
-FROM products p
-WHERE NOT EXISTS (
-     SELECT product_id
-     FROM order_items
-     WHERE product_id = p.product_id
-)
+USE sql_invoicing;
+SELECT 
+      invoice_id,
+      invoice_total,
+      (SELECT AVG(invoice_total)
+       FROM invoices) AS invoice_average,
+       invoice_total - (SELECT invoice_average) AS difference
+FROM invoices 
