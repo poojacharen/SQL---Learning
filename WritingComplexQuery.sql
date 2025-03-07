@@ -1,15 +1,12 @@
--- The ALL Keyword
--- Selectinvoices larger than all invoices of client 3
+-- The ANY Keyword
+-- Select clients with at least two invoices
 
 USE sql_invoicing;
 SELECT *
-FROM invoices 
-WHERE invoice_total > ALL (
-     SELECT invoice_total
+FROM clients
+WHERE client_id = ANY (
+     SELECT client_id
      FROM invoices
-     WHERE client_id = 3
+     GROUP BY client_id
+     HAVING COUNT(*) >= 2
 )
-
-
-
-
