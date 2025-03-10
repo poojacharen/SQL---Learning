@@ -8,4 +8,11 @@
 -- eg: DAYNAME(NOW)), MONTHNAME(NOW))
 -- EXTRACT() It is part of the standard sql language. If we want to be able to port the code to other dbms, we can use the EXTRACT fun
 -- eg: EXTRACT(YEAR FROM NOW()), or MONTH< DAY, DATE etc,.. so when calling this fun we type out the unit (YEAR), then the from keyword 
---                                                          and then a date time value.
+--                                                       and then a date time value.
+
+-- Exercise
+USE sql_store;
+SELECT *
+FROM orders
+WHERE YEAR(order_date) = YEAR(NOW())
+
