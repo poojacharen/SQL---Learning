@@ -1,14 +1,13 @@
--- The IF Function
--- Exercise : Write a query to produce these columns product_id, name, orders, frequency, frequency column which is based on what we have 
---            in the orders column. If a product has been ordered more than once in a frequency column we have Many times, otherwise Once
+-- The CASE Operator
+-- It's used when we have multiple expressions to test
 
 USE sql_store;
 SELECT 
-      product_id,
-      name,
-      COUNT(*) AS orders,
-      IF(COUNT(*) > 1, "Many times", "Once") AS frequency
-FROM products
-JOIN order_items USING (product_id)
-GROUP BY product_id, name
-      
+     order_id,
+     CASE 
+         WHEN YEAR(order_date) = YEAR(NOW()) THEN "Active"
+         WHEN YEAR(order_date) = YEAR(NOW()) -1 THEN "Last Year"
+         WHEN YEAR(order_date) < YEAR(NOW()) -1 THEN "Archived"
+         ELSE "Future"
+	END AS category
+FROM orders
