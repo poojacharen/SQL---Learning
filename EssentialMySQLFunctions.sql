@@ -10,6 +10,6 @@ SELECT
          WHEN points > 3000 THEN "Gold"
          WHEN points BETWEEN 2000 AND 3000 THEN "Silver"
          WHEN points < 2000 THEN "Bronze"
-	 END AS category
+	 END AS medals
 FROM customers
      
