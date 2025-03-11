@@ -1,9 +1,21 @@
--- The WITH OPTION CHECK Clause - This view will prevent, uodate or delete statements from excluding rows from the view.
+-- Other benefits of Views : As we know, 
+-- 1. Views can help us by simplifying our queries. And there are couple more benefits.,
+-- 2. Views can reduce the impact of changes to your db design.   
+--  eg:  Imagine you have written 10 queries on top of the invoice table, and later you wanted to change the column of the table or the data
+--       in the table. What will happen to the queries? We hae to come back and fix all those queries that reference this table. 
+--       And what you have been told to not change any query written within this table. 
+--      Then you go to the view table where we have created the invoices_balance, everything is same as invoice table except the extra column ie., balance.
+--      So if we want to make any changes with the invoices table, we can simply modify the view code and use an alias for the change cols to 
+--      bring back their old name. Or if you move one of these columns to a new table, we can join the invoices table with that table and bring
+--      back that column. 
 
--- USE sql_invoicing;     
--- UPDATE invoices_balance
--- SET payment_total = invoice_total
--- WHERE invoice_id = 2
--- With above aproach the invoices_balance wit id 2 is deleted 
--- So we need recreate this view by executing the statement and type WITH OPTION CHECK 
--- We get an error, check option failed. So by default when we update data through a view, the modified rows will no longer will be included in the view.
+-- CREATE VIEW my_view AS
+-- SELECT 
+     -- payment_date AS payment_due
+-- FROM invoices
+
+-- 3. Views can also restrict access to the data in the underlying table
+--    eg: In your view, you may use a WHERE clause to filter the records, or you may exclude some of the columns in the underlying table. If you
+--        remove direct access to the table users only can update the data through your views and they won't be able to modify the value of a 
+--        certain column, or modify the rows that are not returned by your view 
+-- 4. Views can also be used for data security
