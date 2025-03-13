@@ -1,13 +1,3 @@
--- Creating a Stored Procedure
--- Exercise : Create a SP called get_invoices_with_balance, to return all the invoices with a balance > 0
--- I took the FROM statement from Views
-
-DELIMITER $$
-CREATE PROCEDURE get_invoices_with_balance()
-BEGIN
-SELECT *
-FROM invoices_balances
-WHERE balance > 0;
-END$$
-
-DELIMITER ;
+-- Creating Procedures Using MySQLWorkbench
+-- On the left side panel right click on stored procedures --> create procedures --> type whatever needed --> click apply --> again apply
+-- So it creates the SP 
