@@ -1,0 +1,7 @@
+-- Stored Procedures : It is a database object that ontains a block of SQL code. 
+-- In our application code, we simply call these procedures to get or save the data. 
+-- So we use Stored Procedures to 1. store and organize our SQL code
+-- SP have other benefits, most dbms perform some kind of optimization code in stored procedures
+--                                2. SQL code in SP can sometimes be executed faster
+--                                3. Also, just like Views, SP allows us to enforce data security. eg: we can remove the direct access
+--                                            to the tables and allow various operations like inserting, updating and deleting data
