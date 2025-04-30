@@ -1,0 +1,76 @@
+-- Concurrency Problems
+-- 1. Lost Updates : This happens when two transactions try to update the same data and you don't use locks, in this situation the transaction that commits 
+--                   later will override the changes that made by the previous transcation
+-- eg: Let's say we have two transactions that try to update the same customer. One tries to update the points, the other tries to update the 
+--     state for ths customer. 
+-- Here is the customer record - JOHN, NY, 10
+-- Now we have 2 transactions -      A                B
+--                               John, NY, 10    John, NY, 10
+-- Transaction A tries to update the state of this customer and transaction B that tries to update the points of the customer. These 2 transcations occur at the same time
+-- Now, let's say transaction A updates the state but it hasn't committed yet. At the same time transaction B updates the points. Now the transcation 
+-- that commits last, will override the changes made earlier. In this case, if the transaction B commits last, we will lose the update mady by transaction A
+--       A             B
+--  John, VA, 10   John, NY, 20
+-- How can we prevent this from happening ?
+-- We use locks. As seen in the last lecture, by efault MySQL uses a locking mechanism to prevent 2 transactions from updating the same data at the same time. They will run in sequence one after the another
+-- and we'll have both updates. 
+
+-- 2. Dirty Reads : A dirty read happens when a transaction reads data that hasn't been committed yet. 
+-- eg: Transaction A changes changes the points for the customer from 10 to 20, but before it commits the change, transaction B rates this customer and based on the customer points makes a decision.
+-- So let's say for every one point it gives a $1 discount to a customer. So it's going to give this customer a $20 discount. 
+--        A                      B
+--  UPDATE customers
+--  SET points = 20
+--                        SELECT points
+--
+--  COMMIT..... what if transaction A ROLLBACK before transcation B completes?
+-- Transaction B will have data that will have never existed. In other words, this customer never had 10 points,it was never committed to the database and transaction B gave this customer a $20 discount
+-- So in this scenario, we have read uncommitted data in transaction B. Our data was dirty.
+
+-- 3. Non-repeating Reads : So by adding more isolation to our transaction, we can guarantee that the transaction can only read committed data. But what if during the course of the transcation
+-- you read something twice and get different results
+-- eg: Transaction A reads ou customer points and sees that this customer has 10 points so it will make a business decision based on the value. Now before transaction A completes another transaction B updates the points
+-- for this customer to 0. And back to transaction A, we read the points for this customer one more time, perhaps as part of the subquery. Now in this transaction, we have read the points twice, and eaxh time the transaction
+-- we have seen a different value, this is a non-repeatable or inconsistent read
+--        A                    B
+--  SELECT points
+--          (10)
+--
+--                      UPDATE points
+--  SELECT points
+--          (0)
+-- How should we handle this situation ?
+-- We can argue that at any point in time we should make decisions based on what is the most up to date? If thet's the case for business scenario, we don't really have to worry about anything here.
+-- But we can also argue that the time our transaction started, this customer had 10 points, so we should have given them a 10$ discount. If the points change during this transaction, we shouldn't see the changes,
+-- we should see the initial snapshot. If that's what we want, then we ned to increase the isolation level of our transaction. We need toisolate it from other transactions such that changes to the data aren't visible to our transcation
+-- The SQL standard defines another isolation level called repeatable reads. With this level, our reads are repeatbale and consistent, even if the data gets changed by other transactions. We'll see the snapshot that was established by the first read
+--        A                    B
+--  SELECT points
+--          (10)
+--
+--                      UPDATE points
+--  SELECT points
+--          (10)
+
+-- 4. Phantom Reads : Imagine that in transaxtion A you are querying all the customers who have more than 10 points. Perhaps you want to send them a special discount code. 
+-- Now the same time transaction B updates the points for another customer that was not returned by our query, so this customer is now eligible for this discount code, by the time we query the the customers table
+-- we didn't save this customer. So after transaction A completes there is still one eligible customer that didn't recieve this discount code. 
+-- This is what we call a phantom read. Phantom is ghost, so we have data that suddenly appears like a ghost. And we miss them in our query, because they get added, updates or removed after we execute our query.
+--        A                  B
+-- SELECT customers     UPDATE points
+-- WHERE points > 10
+--
+-- COMMIT 
+-- How can we solve this problem ?
+-- It depends on the business problem you're trying to solve, and how important it is to include this customer in our transaction. We can always re-execute transaction A at a later time,
+-- and this customer will also get a discount code, not a big deal. But if it's absolutely critical to include all eligible customers in our transaction, we'll have to make sure that no othet transactions are running that can impact our query to find our eligible customers
+-- For this we have another isolation level called serializable, and this will guarantee that our transaction will be aware of changes currently being made by other transactions to the data
+-- If there are other transactions modifying the data that can impact our query result, our transaction has to wait for them to complete. So transactions will be 
+--        A                  B
+-- SELECT customers     UPDATE points
+-- WHERE points > 10
+--
+-- COMMIT               COMMIT
+-- So transaction will be executed sequentially, this is the highest level of isolation that we can apply to a transaction and it gives us the most certainity in our operations.
+-- But it comes with a cost, the more users and the concurrent transactions we have, the more waits we're going to experience and the system is going to slow down, so this 
+-- isolation level can hurt performance and scalability. For this reason we should reserve this only in scenarios where it's absolutely critical and necessary to prevent phantom reads
