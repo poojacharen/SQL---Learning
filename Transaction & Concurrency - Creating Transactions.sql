@@ -12,3 +12,4 @@ INSERT INTO order_items
 VALUES (LAST_INSERT_ID(), 1, 1, 1);
 
 COMMIT;
+-- Also we can use ROLLBACK whenever needed in the place of commit
