@@ -1,0 +1,19 @@
+-- String Types
+-- There are bunch of string category but the most commom one's are 
+-- CHAR(x) - we use CHARS for storing fixed-length srings like the aggregation of states 
+-- VARCHAR(x) - we use VARCHARS for storing variable-length strings like user names, passwords, emails, addresses and so on...
+
+-- We need to be Consistent!
+-- VARCHAR(50) for short strings
+-- VARCHAR(255) for medium-length strings
+-- So, this consistency simplifies the maintenance of our databases, and we don't have to constantly check the length of each column
+
+-- VARCHAR(x) - max : 65,535 characters (~64KB) : if we want to store something that is longer then it will get truncated. So to prevent that,
+-- we can use 
+-- MEDIUMTEXT - max : 16MB(roughly 16 million characters) - this is good for storing json objects, cs view strings and short-medium length quotes
+-- we also have 
+-- LONGTEXT - max : 4GB of textual data and this is good for storing text book or years of log files 
+-- Above mentioned are the most common string types other than that we also have,
+
+-- TINYTEXT - max : 255 bytes 
+-- TEXT - max : 64KB (65,000 characters) just like VARCHAR
