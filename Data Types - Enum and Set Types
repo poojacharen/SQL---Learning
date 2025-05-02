@@ -1,0 +1,24 @@
+-- Enum and Set Types
+-- eg: We might have a column called size and in this column we only want to allow the values samll, medium, large
+--     ie., where we use enum
+-- 1. ENUM('small', 'medium', 'large')
+-- I created a new column called size for products table under sql_store 
+-- clicked on the mechanic symbol created a column [size ENUM('small', 'medium', 'large') press tab 2 times and apply
+-- now open the products table and I edited the first row by typing 'small' on the size column press tab once and click apply
+-- close and rropen the products table
+-- we see the first row with the small size
+
+-- Generally ENUM's are bad and we should avoid them
+-- first reason is that changing the mmbers of the an ENUM can be expensive
+-- eg: Lets' say tomoroow we decided to come back to the products table and a new member or rename any of the members. 
+--     MySQL is going to rebuild the entire table and this can be expensive. if we have millions of records in the table.
+--   Also, with this approach we can add additional attributes to each member
+--   eg: what if we want to equal the actual measurements for each size. We can do that. Also, if we want to get the all possible sizes and display
+--       them in a drop down list in our application we have to do it a bit more work, it's not that easy and also the ENM's are not reusable
+
+-- Better approach is to have a separate table called sizes and this table we can store all the sizes and any additional attributes they have 
+-- like their measurement. We can reuse this table in multiple places and if we want to get all the sizes, we write a single SELECT statement it's really easy
+-- We refer to this kind of table as a lookup table
+
+-- 2. SET(...) - a set can store multiple values, so similar to enums, we specify the list of allowable values, and then we can store multiple values in a column
+--              Again, this is really bad because it causes all sorts of issues.
