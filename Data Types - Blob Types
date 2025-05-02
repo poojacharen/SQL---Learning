@@ -1,0 +1,12 @@
+-- Blob Types - we use this to store large amounts of binary data like images, videos, pdf's , word files, and pretty much any binary data 
+-- In MySQL we have 4 blob types and they differ based on the max amount of data they can store
+-- TINYBLOB - for storing binary data upto 255bytes
+-- BLOB - for storing data upto 65kb
+-- MEDIUMBLOB - for storing binary data upto 16megabytes
+-- LONGBLOB - for storing binary data upto 4gigabytes
+
+-- Problems with storing files in database
+-- 1. database size is going to increase pretty quickly and
+-- 2. that will slow-down our backups
+-- 3. we will also experience performance problems because pulling images out of our database is always slower than reading them from the dile system
+-- 4. and also we have to read/write additional code to read or store images in the database
