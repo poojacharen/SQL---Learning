@@ -1,0 +1,19 @@
+-- Fixed-point and Floating-point Types
+-- In MySQL there are 3 types for storing numbers with a decimal point
+-- 1. DECIMAL(p, s) - this is useful for storing fixed-point numbers, these are the numbers that have a fixed number of digits after the decimal point
+--               when using DECIMAL type we need to supply two arguments (p - precision, s - scale)
+--          precision - it specifies the maximum number of digits and this can be between 1 and 65
+--          scale - it determines the number of digits after the decimal point 
+--                 eg: DECIMAL(9, 2) => 1234567.89 (we can store a max of 9 digits, we have 2 digits after and 2 digits before the dec ppoint)
+-- Also, the DECIMAL type has few synonyms they are :
+-- DEC
+-- NUMERIC
+-- FIXED
+-- We need to just stick with the DECIMAL and keep things consistent
+
+-- We also have
+-- FLOAT 4bytes
+-- DOUBLE 8bytes
+-- These are used in scientific calculations like if we want to perform calculations with very large or very small numbers, we should use these types
+-- To remember : these types don't store the exact value. They use an approximation. That is the reasin they allow us to store really large or 
+--               really small numbers
