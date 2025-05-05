@@ -1,0 +1,3 @@
+-- Logical Models : these are independent of the database technologies, that's why it is called logical data model
+-- It is just an abstract data model that clearly shows our entities and their relationships 
+-- Refer draw.io or refer the course
