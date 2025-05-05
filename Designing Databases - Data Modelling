@@ -1,0 +1,6 @@
+-- Data Modelling : which is a process of creating a model, for the data we want to store in a database
+-- It involves 4 steps
+-- 1. Understand the requirements : understand and analyze the business requirements
+-- 2. Build a Conceptual Model : this involves identifying the entities or things or concepts in the business and their relationships with each other
+-- 3. Build a Logical Model : logical model is an abstract data model that is independent of database technology
+-- 4. Build a Physical Model : physical model is the implementation of a logical model for a particular database technology
