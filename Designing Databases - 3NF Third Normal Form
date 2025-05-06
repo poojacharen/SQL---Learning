@@ -16,4 +16,4 @@
 -- 3NF says that a column in a table should not be derived from other columns 
 -- The 3NF just like the other NF's helps us to reduce duplication and increase data integrity
 
--- so in the above eg we should drop the balance column, we really don't need it 
+-- so in the above eg we should drop the balance column, we really don't need it
