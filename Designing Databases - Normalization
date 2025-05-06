@@ -1,0 +1,8 @@
+-- Normalization 
+-- Eg : If the name of someone is repeated in many different places and they decide to change their name. We'll have to update several different places,
+--      otherwise we'll have inconsistent data, and this is bad because it gives us invalid reports. 
+-- So, that's whre Normalization comes to the rescue
+-- Normalization : It is the process of reviewing our design and ensuring that it follows pre-defined rules that prevent data duplication 
+-- There are basically 7 rules also called as 7 normal forms and ecah rule assumes that we have applied the previous rules 
+-- For 99% of application we need to apply the first 3 normal forms ie.,
+-- 1st Normal Form, 2nd Normal Form, 3rd Normal Form
