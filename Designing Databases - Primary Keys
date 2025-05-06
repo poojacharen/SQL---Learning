@@ -1,0 +1,3 @@
+-- Primary Keys : it is a column that uniquely identifies each record within a table 
+-- The combination of first_name and last_name is called composite primary key.
+-- Composite primary key is the one that has multiple columns 
