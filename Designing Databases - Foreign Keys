@@ -1,0 +1,2 @@
+-- Foreign Keys : they are marked as a red diamond (ERR diagram) as it is a foreign key 
+-- Foreign key is a column in one table that references the primary key of another table
