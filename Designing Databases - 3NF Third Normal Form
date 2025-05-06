@@ -1,0 +1,19 @@
+-- 3NF Third Normal Form
+-- 3NF is a normal form that is used in normalizing a database design to reduce the duplication of data and ensure referential integrity by 
+-- ensuring that :
+-- 1. the entity is in second normal form
+-- 2. all the attributes in a table are determined only by the candidate keys of that relation and not by any non-prime attributes
+-- eg: Invoices table, there are 3 columns, invoice_total, payment_total and balance
+-- ...   invoice_total   payment_total    balance
+--           100              20			80
+
+-- Do you agree that we can calculate the balance by subtracting the payment_total from the invoce_total ?
+-- So, balance can be derived from these two columns (ie., invoice_total & payment_total). We say it's dependent on these two columns, which means if the 
+-- value of the column changes, the balance has to be recalculated right?
+-- But what if we forget the changes and din't update the balane ?
+-- Our data will not be consistent
+
+-- 3NF says that a column in a table should not be derived from other columns 
+-- The 3NF just like the other NF's helps us to reduce duplication and increase data integrity
+
+-- so in the above eg we should drop the balance column, we really don't need it 
