@@ -1,0 +1,3 @@
+-- Foreign Key Constraints 
+-- Whenever we have a foreign key in a table, we need to set the constraints in the foreign key and that basically protects our data from getting corrupted
+ 
