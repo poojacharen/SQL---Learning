@@ -1,0 +1,6 @@
+-- 2NF Second Normal Form
+-- To qualify for 2NF a relation must :
+-- 1. be in 1NF
+-- 2. not have any non-prime attribute that is dependent on any proper subset of any candidate key of the relation. A non-prime attribute of a relation in an attribute that is not part of any candidate key of the relation.
+-- What does the above mean ?
+-- The 2NF says that every table shuld describe one entity, and every column in that table should describe that entity
