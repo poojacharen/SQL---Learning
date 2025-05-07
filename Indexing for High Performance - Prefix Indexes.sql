@@ -5,7 +5,7 @@
 -- So, when indexing string columns we don't want to include the entire column in the index, we only want to include the first few characters or 
 -- the prefix of the column so our index will be smaller
 
--- Let's say we want to create index on the last_name column in the customers table,
+-- Let's say we want to create index on the last_name column in the customers table :-
 
 CREATE INDEX idx_last_name ON customers (last_name(20)); 
 
