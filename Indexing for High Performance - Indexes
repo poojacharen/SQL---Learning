@@ -1,0 +1,15 @@
+-- Indexes :
+-- They are basically data structures, that database engines use to quickly find data as an anology we think of a telephone directory.
+-- Using a telephone directory we can quickly find soeone else's phone number because contacts are sorted by their last and first names, this
+-- way we don't have to go through every contact in the directory.
+-- Database Management System use indexes to find data in a similar way. 
+
+-- In lot of cases, indexes are small enough that they can fit into a memory. ie., why it's much faster to use them to find data, because reading data from
+-- the memory is always faster than reading it from the disk. 
+-- So, indexes help us find data quickly but they come with a cost
+-- Cost of Indexes :
+-- 1. They increase the size of the databases because they have to be permanently stored next to the tables
+-- 2. Also, everytime we add, update or delete a record, MySQl has to update the corresponding indexes, and this will impact the performance of 
+--    our write operations ie., it basically slows down the writes
+-- For this reasons we should Reserve Indexes for performance critical queries 
+-- Design indexes based on the queries not the tables 
