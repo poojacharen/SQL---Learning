@@ -1,0 +1,3 @@
+-- Indexing for High Performance - Intro
+-- Indexes are extremely important in large databases and high traffic websites, because they can improve the performance of our queries dramatically
+-- Indexes speed up our queries 
