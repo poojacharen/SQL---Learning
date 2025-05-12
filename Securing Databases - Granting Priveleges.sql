@@ -20,3 +20,9 @@ TO moon_app;
 GRANT ALL 
 ON *.* -- *.* all tables in all databases
 TO pooja
+
+
+
+-- Moon_app connection
+USE sql_store;
+SELECT * FROM customers;
