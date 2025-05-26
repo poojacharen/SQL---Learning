@@ -1,0 +1,14 @@
+-- Project - Video Rental Applicatin
+-- Solution - Conceptual Model
+
+-- New Entity : User -- Attributes : UserName, Password
+-- New Entity : Permission -- Attributes : Description
+-- Relationship : many-to-many from User-->Permission 
+-- New Entity : Customer -- Attributes : name, Email, Phone
+-- New Entity : Movie -- Attributes : Barcode, DailyRentalRate, NumberInStock
+-- Relationship : many-to-many from Customer-->Movie
+-- New Entity : Rental -- Attributes : NumberOfDays
+-- We delete the relationship between customervand movie
+-- Relationship : many-to-many from Customer-->Rental and from Movie-->Rental
+-- New Entity : Coupon -- Attributes : Code, Description, Discount
+-- Relationship : many-to-many from Coupon-->Rental
