@@ -1,0 +1,20 @@
+-- Flight Booking System
+-- Solution - Conceptual Model
+
+-- In the draw.io we are going to create a conceptual model using entity relationship diagrams
+-- What entities or concept do we have in this domain?
+-- We have concept fo Flight, Passenger or Traveler, Aircraft, Airline and so on... These are the concepts that we immediately see in this domain
+-- So in the draw.io lets create an entity for each, in the draw.io --> entity relation --> entity table
+-- 1. Passenger 2. Flight  - A passenger books a flight, 
+-- Now let's add a relationship between these two entities (ie., passenger and flight) we are going to connect them. So for now let's use the 
+-- many-to-many relationship and add the label to this relationship called Books (ie., once we connected both of them we add in the middle of the
+-- connection called books). So passenger books flight
+-- Passenger Attributes : Name
+-- Flight Attributes : Number, DepartureDateTime, ArrivaldateTime, Duration, Distance, Airline
+-- New entity Airport : IATACode, Name, City, State
+
+-- Note: Passenger to Flight relationship is deleted
+
+-- Another new entity Ticket : TicketNumber, Price, FlightClass, ConfirmationNumber
+-- Relationship : many-to-many Passenger --> Ticket : conneting message - purchases 
+-- Relationship : many-to-many Ticket --> Flight : connecting message - Issued for
