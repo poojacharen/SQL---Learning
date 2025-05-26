@@ -20,3 +20,5 @@
 -- Ticket : TicketNumber(string), price (float), ConfirmationNumber (string)
 -- New entity : Airline : Name (string), a one-to-many-relationship from Airline --> Flight and also with this we can remove airline attribute from flight
 -- New Entity : FlightClass : Name (string), a one-to-many-relationship from FlightClass --> Flight and also we can remove FlightClass attribute from Flight
+
+-- Also refer to the google drive for the draw.io diagram of both the conceptual and logical model from poojithalearning@gmail.com (google drive)
