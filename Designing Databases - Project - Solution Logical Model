@@ -1,0 +1,22 @@
+-- Flight Booking System
+-- Solution - Logical Model
+
+-- Now we have to refine few things to build logical model
+-- Let's see the relationship between the Passenger --> Ticket
+-- A passenger can buy oe sell many tickets, but each ticket is issued for only a single passenger. Now, we have changed the relationship from many-to-many
+-- to one to many (passenger to ticket)
+-- Now what about ticket --> flight
+-- Again, here we have many-to-may relationship, because each ticket is issued for a particular flight, but a flight can have many different tickets
+-- So we have a one-to-many relationship between Flight and Ticket
+-- Next, what about the flight --> airport
+-- Each airport can host many differet flights, but each flight works with two and only two airports, now any relationship diagrams, we don't have two
+-- we only have one and many. So we can still treat this relationship as a many-to-many relationship because the flight deals with multiple airports and 
+-- airport host flights. 
+
+-- Now let's set the type for each attribute
+-- Airport : IATACode (string), Name (string), City (string), State (string)
+-- Flight : Number (string), DepartureDateTime (dateTime), ArrivaldateTime (dateTime), DurationInMinutes(integer), DistanceInMiles(integer), Airline (string), DepartureAirportID (integer), ArrivalAirportID (integer)
+-- Passenger : FirstName (string), LastName (string)
+-- Ticket : TicketNumber(string), price (float), ConfirmationNumber (string)
+-- New entity : Airline : Name (string), a one-to-many-relationship from Airline --> Flight and also with this we can remove airline attribute from flight
+-- New Entity : FlightClass : Name (string), a one-to-many-relationship from FlightClass --> Flight and also we can remove FlightClass attribute from Flight
