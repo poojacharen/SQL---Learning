@@ -1,0 +1,36 @@
+-- Project - Video Rental Applicatin
+-- Solution - Logical Model
+
+-- Now we need to think about storage, is this model a good model for storing this data in this application
+-- First let's see about the Users and Permission :
+-- We are going to specify the the type of relationships between these two entities, we have many-to-many relationship because, a User can have
+-- multiple permissions, and the same Permission can be applied to different Users, many-to-many. 
+-- But we have a problem, ie., that everytime we register a user, we have to explicitly assign those permissions to that user. 
+-- For eg: today we have one cashier, let's call that cashier number 1, we need to give this cashier 10 permissions. Tomorrow we hire a new cashier we have
+--         to comeback and give this new cashier these exact 10 permissions. The problem is that we may give one cashier an extra permission, or we may
+--         forget to give them one permission that they really need. So the issue is that our cashiers or store managers are not going to have a consistent
+--         set of permissions, each user has different set of permissions. So, we have to make sure that our users have consistent permissions.
+
+-- New Entity : Role -- Attributes : Name
+-- Relationship : many-to-one from User-->Role (We need to delete the relation between User-->Permission), many-to-many from Role-->Permission
+-- So, a Role can have multiple users, but a User belongs to one and only one role. 
+-- A Role can have multiple permissions and a Permission can belong to multiple roles. 
+-- We can delete the Permission entity. We really don't need it
+
+-- Datatypes:
+-- User : Username (string), Password(string)
+-- Role : Name (string)
+-- Customer : FirstName (string), LastName (string), Email (string), phone (string)
+-- Movie : Barcode (string), DailyRentalRate (float), NumberInStock(integer)
+-- Rental : we can remove NumberOfDays nd add RentDate(date), returnDate(date)
+
+-- Relationship change between Rental and Coupon to zero-to-one
+-- Relationship change between Rental and Movie to many-to-one
+-- Relationship change between Renatl and Customer to many-to-one
+
+-- In physical terms, in a physical model that means we're gong to have a table called Rentals. In that table, we're going to have a column called 
+-- a coupon and this column is going to be nullible. So, rental can have a maximum of 1 coupon, but a Coupn can be applied to many different rentals
+
+-- What is the relationship between Rental and Movie?
+-- Each Rental is for one movie, but a Movie can be part of many different rentals. 
+-- By the same token a Rental is for a specific customer, but a Customer can have multipple rentals 
